@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import { CreateHolderPlanController, DeleteHolderPlanController, GetAllHolderPlanController, UpdateHolderPlanController } from './controllers/HolderPlanController';
 import { CreatePlanController, DeletePlanController, GetAllPlansController,UpdatePlanController } from "./controllers/PlansController"
 import { CreatePriceController, DeletePriceController, GetAllPriceController, UpdatePriceController } from './controllers/PriceController';
 
@@ -13,6 +14,11 @@ routes.post("/prices",new CreatePriceController().handle);
 routes.get("/prices",new GetAllPriceController().handle);
 routes.delete("/prices/:id",new DeletePriceController().handle);
 routes.put("/prices/:id",new UpdatePriceController().handle);
+
+routes.post("/holderplans",new CreateHolderPlanController().handle);
+routes.get("/holderplans",new GetAllHolderPlanController().handle);
+routes.delete("/holderplans/:id",new DeleteHolderPlanController().handle);
+routes.put("/holderplans/:id",new UpdateHolderPlanController().handle);
 
 
 export {routes};

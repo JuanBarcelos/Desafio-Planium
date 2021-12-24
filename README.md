@@ -8,8 +8,8 @@
 
 
 1. Você recebeu duas tabelas em JSON(presente nesse repositório), uma de Planos e outra de Preços.
-	- A tabela de plano possui os planos que serão vendidos.
-	- A tabela de preço possui o(s) preço(s) para cada plano listado na tabela de planos.
+[X]	- A tabela de plano possui os planos que serão vendidos.
+[X]	- A tabela de preço possui o(s) preço(s) para cada plano listado na tabela de planos.
 
 
 2. Cada plano tem três faixas de preços, sendo estas categorizadas por idade:
@@ -19,7 +19,7 @@
 
 
 3. Cada plano pode ter preços variados dependendo da quantidade de pessoas participando do mesmo.
-	- Essa variação é representada na tabela de preços pela coluna "minimo_vidas".
+[X]	- Essa variação é representada na tabela de preços pela coluna "minimo_vidas".
 
 
 4. Com as especificações acima, faça uma API que permita a entrada dos seguintes dados, salvando-os em um Json chamado beneficiarios.json:
@@ -28,8 +28,6 @@
     - Nome de cada beneficiário
     - Registro do plano escolhido (deve ser um dos registros listados na tabela de plano)
       - Caso o usuário liste um registro inexistente, deve mostrar mensagem de erro.
-
-
 
 5. Essa API deverá ler a tabela de Plano e a tabela de Preço, e retornar:
     - Preço de cada beneficiário para o plano escolhido, juntamente com a sua idade.

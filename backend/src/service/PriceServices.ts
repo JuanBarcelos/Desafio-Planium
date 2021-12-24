@@ -77,7 +77,7 @@ export class UpdatePrice {
     }
 }
 
-    export class DeletePrice {
+export class DeletePrice {
     async execute(id: string) {
         const repo = getRepository(Price);
 
