@@ -30,8 +30,7 @@ export class GetAllHolderPlan {
     async execute() {
         const repo = getRepository(HolderPlan);
 
-        const holder = await repo.find(
-        );
+        const holder = await repo.find({relations:['beneficiary','plan']});
 
         return holder;
     }

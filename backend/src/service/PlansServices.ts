@@ -30,7 +30,7 @@ export class GetAllPlans {
         const repo = getRepository(Plans);
 
         const plans = await repo.find({
-            relations: ["price"]
+            relations: ["price", "holder"]
         });
 
         return plans;
@@ -57,7 +57,7 @@ export class UpdatePlan {
     }
 }
 
-    export class DeletePlan {
+export class DeletePlan {
     async execute(id: string) {
         const repo = getRepository(Plans);
 

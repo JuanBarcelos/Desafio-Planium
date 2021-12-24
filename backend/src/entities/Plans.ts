@@ -1,5 +1,6 @@
-import { Entity,PrimaryColumn, Column, OneToMany, JoinColumn } from "typeorm";
+import { Entity,PrimaryColumn, Column, OneToMany, OneToOne } from "typeorm";
 import {v4 as uuid} from "uuid";
+import { HolderPlan } from "./HolderPlan";
 import { Price } from "./Price";
 @Entity("tb_plans")
 export class Plans{
@@ -17,7 +18,10 @@ export class Plans{
     codigo: number;
 
     @OneToMany(() => Price, price => price.plan)
-    price: Price[];
+    price: Price;
+
+    @OneToOne(() => HolderPlan, holder => holder.plan)
+    holder: HolderPlan[];
 
     constructor(){
         if(!this.id){

@@ -42,6 +42,7 @@ export class GetAllPrice {
     }
 }
 
+
 export class GetAllPricePlan {
     async execute() {
         const repo = getRepository(Price);
