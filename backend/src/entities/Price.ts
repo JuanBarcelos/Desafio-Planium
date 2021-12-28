@@ -3,6 +3,7 @@ import {v4 as uuid} from "uuid";
 import { Plans } from "./Plans";
 @Entity("tb_prices")
 export class Price{
+    [x: string]: any;
 
     @PrimaryColumn()
     id: string;

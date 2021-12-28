@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateHolderPlan, DeleteHolderPlan, GetAllHolderPlan, UpdateHolderPlan } from "../service/HolderPlanServices";
+import { CreateHolderPlan, DeleteHolderPlan, GetAllHolderPlan, GetOneHolderPlan, UpdateHolderPlan } from "../service/HolderPlanServices";
 
 
 export class CreateHolderPlanController {
@@ -31,6 +31,22 @@ export class DeleteHolderPlanController{
         }
 
         return response.status(204).end();
+    }
+}
+
+export class GetOneHolderPlanController{
+    async handle(request: Request, response: Response){
+        const{id} = request.params;
+
+        const service = new GetOneHolderPlan();
+
+        const result = await service.execute(id);
+
+        if(result instanceof Error){
+            return response.status(400).json(result.message);
+        }
+
+        return response.status(200).json(result);
     }
 }
 

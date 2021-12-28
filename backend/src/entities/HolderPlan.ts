@@ -27,6 +27,7 @@ export class HolderPlan{
 
     @OneToMany(() => Beneficiary, beneficiary => beneficiary.holder)
     beneficiary: Beneficiary[];
+    minimoVidas: number;
 
     constructor(){
         if(!this.id){

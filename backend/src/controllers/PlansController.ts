@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { CreatePlan, GetAllPlans, DeletePlan, UpdatePlan, GetAllPlanPrices } from "../service/PlansServices";
+import { CreatePlan, GetAllPlans, DeletePlan, UpdatePlan} from "../service/PlansServices";
 
 export class CreatePlanController {
-    async handle(request: Request, response: Response) {
+    async handle(request: Request, response: Response, next) {
         const { registro, name, codigo } = request.body;
 
         const service = new CreatePlan();
@@ -35,7 +35,7 @@ export class DeletePlanController {
 }
 
 export class GetAllPlansController {
-    async handle(request: Request, response: Response) {
+    async handle(request: Request, response: Response, next) {
         const service = new GetAllPlans();
 
         const plan = await service.execute();
@@ -44,16 +44,7 @@ export class GetAllPlansController {
     }
 }
 
-export class GetAllPlanPriceController {
-    async handle(request: Request, response: Response) {
-        const service = new GetAllPlanPrices();
 
-        const plan = await service.execute();
-
-
-        return response.json(plan);
-    }
-}
 
 export class UpdatePlanController {
     async handle(request: Request, response: Response) {

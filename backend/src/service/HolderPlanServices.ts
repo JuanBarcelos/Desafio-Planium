@@ -1,5 +1,8 @@
 import { getRepository } from "typeorm";
+import { GetAllPlansController } from "../controllers/PlansController";
 import { HolderPlan } from "../entities/HolderPlan";
+import { GetAllPlans } from "./PlansServices";
+
 
 type HolderRequest = {
     id?: string;
@@ -10,7 +13,7 @@ type HolderRequest = {
 }
 
 export class CreateHolderPlan {
-    async execute({ name,age,totalBeneficiary,plans_id }: HolderRequest): Promise<HolderPlan | Error> {
+    async execute({ name, age, totalBeneficiary, plans_id }: HolderRequest): Promise<HolderPlan | Error> {
         const repo = getRepository(HolderPlan);
 
         const holder = repo.create({
@@ -30,14 +33,26 @@ export class GetAllHolderPlan {
     async execute() {
         const repo = getRepository(HolderPlan);
 
-        const holder = await repo.find({relations:['beneficiary','plan']});
+        const holder = await repo.find({ relations: ['beneficiary', 'plan'] });
 
+        const service = new GetAllPlans();
+        return holder;
+    }
+}
+
+export class GetOneHolderPlan {
+    async execute(id: string) {
+        const repo = getRepository(HolderPlan);
+        const holder = await repo.findOne(id );
+        if (!holder) {
+            return new Error("Titular does not exist");
+        }
         return holder;
     }
 }
 
 export class UpdateHolderPlan {
-    async execute({ id,name,age,totalBeneficiary,plans_id }: HolderRequest) {
+    async execute({ id, name, age, totalBeneficiary, plans_id }: HolderRequest) {
         const repo = getRepository(HolderPlan);
 
         const holder = await repo.findOne(id)
